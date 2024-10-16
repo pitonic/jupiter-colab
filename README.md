@@ -1,1 +1,1 @@
-# lab-ai
+# JupyterLab
