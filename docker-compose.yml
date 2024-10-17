@@ -15,6 +15,7 @@ services:
     environment:
       - NVIDIA_VISIBLE_DEVICES=all  # Указываем все доступные GPU
       - NB_USER=nick
+      - GRANT_SUDO=yes
       - CHOWN_HOME=yes
   # colab:
   #   image: us-docker.pkg.dev/colab-images/public/runtime
