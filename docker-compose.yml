@@ -2,19 +2,25 @@
 services:
 
   jupyter:
-    image: jupyter/base-notebook
-    container_name: jupyter-container
+    image: quay.io/jupyter/base-notebook
+    container_name: jupyter-notebook
+    user: root
+    working_dir: /home/nick
+    volumes:
+      - ./notebooks:/home/my-username
+    restart: unless-stopped
     ports:
       - 9999:8888
     runtime: nvidia  # Использование GPU runtime
     environment:
       - NVIDIA_VISIBLE_DEVICES=all  # Указываем все доступные GPU
-
-  colab:
-    image: us-docker.pkg.dev/colab-images/public/runtime
-    container_name: colab-container
-    ports:
-      - 9000:8080
-    runtime: nvidia  # Использование GPU runtime
-    environment:
-      - NVIDIA_VISIBLE_DEVICES=all  # Указываем все доступные GPU
+      - NB_USER=my-username
+      - CHOWN_HOME=yes
+  # colab:
+  #   image: us-docker.pkg.dev/colab-images/public/runtime
+  #   container_name: colab-container
+  #   ports:
+  #     - 9000:8080
+  #   runtime: nvidia  # Использование GPU runtime
+  #   environment:
+  #     - NVIDIA_VISIBLE_DEVICES=all  # Указываем все доступные GPU
