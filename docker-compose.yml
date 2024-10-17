@@ -1,12 +1,20 @@
 
 services:
+
   jupyter:
     image: jupyter/base-notebook
     container_name: jupyter-container
     ports:
-      - 10000:8888
+      - 9999:8888
     runtime: nvidia  # Использование GPU runtime
     environment:
       - NVIDIA_VISIBLE_DEVICES=all  # Указываем все доступные GPU
-# volumes:
-#   ollama:
+
+  colab:
+    image: us-docker.pkg.dev/colab-images/public/runtime
+    container_name: colab-container
+    ports:
+      - 9000:8000
+    runtime: nvidia  # Использование GPU runtime
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all  # Указываем все доступные GPU
