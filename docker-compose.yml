@@ -14,7 +14,7 @@ services:
     image: us-docker.pkg.dev/colab-images/public/runtime
     container_name: colab-container
     ports:
-      - 9000:8000
+      - 9000:8080
     runtime: nvidia  # Использование GPU runtime
     environment:
       - NVIDIA_VISIBLE_DEVICES=all  # Указываем все доступные GPU
